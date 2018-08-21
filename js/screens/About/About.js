@@ -4,7 +4,7 @@ import styles from './styles'
 
 const logo = require('../../assets/images/r10_logo.png')
 
-const About = ({ Conducts }) => {
+const About = ({ allConducts }) => {
   return (
     <ScrollView style={styles.container}>
       <Image style={styles.image} source={logo}/>
@@ -12,7 +12,11 @@ const About = ({ Conducts }) => {
       <Text style={styles.header}>Date & Venue</Text>
       <Text style={styles.bodyText}>The R10 conference will take place on Tuesday, August 28, 2018 in Vancouver, BC.</Text>
       <Text style={styles.header}>Code of Conduct</Text>
-      <Conducts />
+      {allConducts.map(({ title, description, id }) => (
+      <View key={id}>
+         <Text style={styles.title}>{`${title}`}</Text>
+          <Text style={styles.bodyText}>{`${description}`}</Text>
+      </View>))}
     </ScrollView>
   );
 };
