@@ -1,23 +1,30 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
   },
-  title: {
-    color: "#9963EA",
-    fontFamily: "Montserrat-Light",
-  },
   header: {
-    fontSize: 20,
-    fontFamily: "Montserrat-Regular",
+    backgroundColor: '#E6E6E6',
+    fontFamily: 'Montserrat-Regular',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
   },
-  bodyText: {
-    fontFamily: "Montserrat-Light",
+  event: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#e6e6e6',
+    paddingHorizontal: 12,
+    paddingVertical: 15,
   },
-  image: {
-    alignSelf: "center",
-  }
-});
+  title: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 16,
+    paddingBottom: 6,
+  },
+  location: {
+    fontFamily: 'Montserrat-Regular',
+    color: '#999',
+  },
+})
 
-export default styles;
+export default styles
