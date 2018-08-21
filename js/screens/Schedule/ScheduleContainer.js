@@ -2,40 +2,33 @@ import React, { Component } from 'react'
 import Schedule from './Schedule'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Text, View, ActivityIndicator } from 'react-native'
-import styles from './styles'
+import { Text, ActivityIndicator } from 'react-native'
+import { formatSessionData } from '../../lib/formatSessionData'
 
-const Conducts = () => (
-  <Query
-    query={gql`
-      {
-        allConducts {
-          id
-          title
-          description
-        }
-      }
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <ActivityIndicator />
-      if (error) return <Text>Error :(</Text>
-
-      return data.allConducts.map(({ title, description, id }) => (
-        <View key={id}>
-          <Text style={styles.title}>{`${title}`}</Text>
-          <Text style={styles.bodyText}>{`${description}`}</Text>
-        </View>
-      ))
-    }}
-  </Query>
-)
+const SCHEDULE_QUERY = gql`
+  {
+    allSessions {
+      id
+      title
+      startTime
+      location
+    }
+  }
+`
 
 export default class ScheduleContainer extends Component {
   static navigationOptions = {
     title: 'Schedule',
   }
   render() {
-    return <Schedule Conducts={Conducts} />
+    return (
+      <Query query={SCHEDULE_QUERY}>
+        {({ data: { allSessions }, loading, error }) => {
+          if (loading) return <ActivityIndicator />
+          if (error) return <Text>Error :</Text>
+          return <Schedule data={formatSessionData(allSessions)} />
+        }}
+      </Query>
+    )
   }
 }
