@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import About from "./About";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import { Text, View } from "react-native";
+import React, { Component } from 'react'
+import About from './About'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import { Text, View, ActivityIndicator } from 'react-native'
 import styles from './styles'
 
 const Conducts = () => (
@@ -10,6 +10,7 @@ const Conducts = () => (
     query={gql`
       {
         allConducts {
+          id
           title
           description
         }
@@ -17,23 +18,24 @@ const Conducts = () => (
     `}
   >
     {({ loading, error, data }) => {
-      if (loading) return <Text>Loading...</Text>;
-      if (error) return <Text>Error :(</Text>;
+      if (loading) return <ActivityIndicator />
+      if (error) return <Text>Error :</Text>
 
-      return data.allConducts.map(({title, description}) => (
-        <View>
+      return data.allConducts.map(({ title, description, id }) => (
+        <View key={id}>
           <Text style={styles.title}>{`${title}`}</Text>
-          <Text>{`${description}`}</Text>
+          <Text style={styles.bodyText}>{`${description}`}</Text>
         </View>
       ))
     }}
   </Query>
-);
+)
 
 export default class AboutContainer extends Component {
+  static navigationOptions = {
+    title: 'About',
+  }
   render() {
-    return (
-        <About Conducts={Conducts} />
-    );
+    return <About Conducts={Conducts} />
   }
 }

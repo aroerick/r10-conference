@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Schedule from './Schedule'
+import Favs from './Favs'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Text, View, ActivityIndicator } from 'react-native'
@@ -31,11 +31,11 @@ const Conducts = () => (
   </Query>
 )
 
-export default class ScheduleContainer extends Component {
+export default class FavsContainer extends Component {
   static navigationOptions = {
-    title: 'Schedule',
+    title: 'Favs',
   }
   render() {
-    return <Schedule Conducts={Conducts} />
+    return <Favs Conducts={Conducts} />
   }
 }

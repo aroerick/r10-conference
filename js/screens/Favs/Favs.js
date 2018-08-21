@@ -4,7 +4,7 @@ import styles from './styles'
 
 const logo = require('../../assets/images/r10_logo.png')
 
-const Schedule = ({ Conducts }) => {
+const Favs = ({ Conducts }) => {
   return (
     <ScrollView style={styles.container}>
       <Image style={styles.image} source={logo}/>
@@ -17,4 +17,4 @@ const Schedule = ({ Conducts }) => {
   );
 };
 
-export default Schedule;
+export default Favs;
