@@ -1,13 +1,11 @@
-import React from "react";
-import { Text, ScrollView } from "react-native";
+import React from 'react'
 import styles from './styles'
+import { SessionList } from '../../components/SessionList'
 
-const Favs = ({ favIds, getFavs }) => {
+const Favs = ({ data, nav }) => {
   return (
-    <ScrollView style={styles.container}>
-      <Text>FAVS</Text>
-    </ScrollView>
-  );
-};
+    <SessionList data={data} styles={styles} nav={nav} />
+  )
+}
 
-export default Favs;
+export default Favs

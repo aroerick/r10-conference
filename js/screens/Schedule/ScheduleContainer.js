@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import { Text, ActivityIndicator } from 'react-native'
 import { formatSessionData } from '../../lib/formatSessionData'
 
-const SCHEDULE_QUERY = gql`
+export const ALL_SESSIONS_QUERY = gql`
   {
     allSessions {
       id
@@ -24,7 +24,7 @@ export default class ScheduleContainer extends Component {
   }
   render() {
     return (
-      <Query query={SCHEDULE_QUERY}>
+      <Query query={ALL_SESSIONS_QUERY}>
         {({ data: { allSessions }, loading, error }) => {
           if (loading) return <ActivityIndicator />
           if (error) return <Text>Error :</Text>
