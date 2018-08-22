@@ -15,10 +15,12 @@ const SCHEDULE_QUERY = gql`
     }
   }
 `
-
 export default class ScheduleContainer extends Component {
   static navigationOptions = {
     title: 'Schedule',
+  }
+  sessionNav = id => {
+    this.props.navigation.navigate('Session', { id: id })
   }
   render() {
     return (
@@ -26,7 +28,7 @@ export default class ScheduleContainer extends Component {
         {({ data: { allSessions }, loading, error }) => {
           if (loading) return <ActivityIndicator />
           if (error) return <Text>Error :</Text>
-          return <Schedule data={formatSessionData(allSessions)} />
+          return <Schedule data={formatSessionData(allSessions)} nav={id => {this.sessionNav(id)}}/>
         }}
       </Query>
     )
