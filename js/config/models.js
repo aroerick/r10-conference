@@ -5,26 +5,27 @@ const favsSchema = {
   primaryKey: 'id',
   properties: {
     id: 'string',
-    favd_on: 'date',
+    favdOn: 'date',
   },
 }
 
 const realm = new Realm({ schema: [favsSchema] })
 
-export const addFav = (id, favd_on) => {
+export const addFav = id => {
   realm.write(() => {
     realm.create('Favs', {
       id,
-      favd_on,
+      favdOn: new Date(),
     })
   })
 }
 export const removeFav = id => {
   return realm.write(() => {
-    realm.delete(id)
+    const favToRemove = realm.objects('Favs').filtered(`id == $0`, id)
+    realm.delete(favToRemove)
   })
 }
-export const findFavs = () => {
+export const getFavs = () => {
   return realm.objects('Favs')
 }
 
