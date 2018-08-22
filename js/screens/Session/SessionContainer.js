@@ -19,6 +19,9 @@ const SESSION_QUERY = gql`
 `
 
 export default class SessionContainer extends Component {
+  static navigationOptions = {
+    title: 'Session',
+  }
   render() {
     return (
       <Query
