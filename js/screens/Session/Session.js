@@ -1,14 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, View } from 'react-native'
+import moment from 'moment'
 
-const Session = () => {
-
+const SessionSingle = ({ data }) => {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text>{data.title}</Text>
+        <Text>{data.location}</Text>
+        <Text>{data.speaker.name}</Text>
+        <Text>{moment(data.startTime).format('h:mm A')}</Text>
       </View>
     )
 
 }
 
-export default Session
+export default SessionSingle

@@ -5,14 +5,11 @@ import moment from 'moment'
 import { withNavigation } from 'react-navigation';
 
 const Schedule = ({ data, nav }) => {
-  onPress = id => {
-    nav(id)
-  }
   return (
     <ScrollView style={styles.container}>
       <SectionList
         renderItem={({ item }) => (
-          <TouchableHighlight key={item.id} underlayColor={'#E6E6E6'} activeOpacity={0.7} onPress={() => this.onPress(item.id)}>
+          <TouchableHighlight key={item.id} underlayColor={'#E6E6E6'} activeOpacity={0.7} onPress={() => nav(item.id)}>
             <View style={styles.event}>
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.location}>{item.location}</Text>
@@ -29,4 +26,4 @@ const Schedule = ({ data, nav }) => {
   )
 }
 
-export default withNavigation(Schedule)
+export default Schedule
