@@ -1,7 +1,7 @@
 import React from 'react'
 import {
-  createBottomTabNavigator,
   createStackNavigator,
+  createDrawerNavigator
 } from 'react-navigation'
 import About from '../screens/About'
 import Schedule from '../screens/Schedule'
@@ -11,6 +11,9 @@ import Favs from '../screens/Favs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { sharedNavigationOptions } from './config'
 
+const renderIcon = (iconName, tintColor) => {
+  return <Ionicons name={iconName} size={25} color={tintColor} />
+}
 const ScheduleStack = createStackNavigator(
   {
     Schedule: {
@@ -21,11 +24,16 @@ const ScheduleStack = createStackNavigator(
     }
   },
   {
-    navigationOptions: ({ navigation }) => ({
+    navigationOptions:  ({ navigation }) => ({
       ...sharedNavigationOptions(navigation),
     }),
   }
 )
+ScheduleStack.navigationOptions = {
+  drawerIcon: ({ tintColor, }) => (
+    renderIcon('md-calendar', tintColor)
+  )
+}
 const MapStack = createStackNavigator(
   {
     Map: {
@@ -38,11 +46,19 @@ const MapStack = createStackNavigator(
     }),
   }
 )
+MapStack.navigationOptions = {
+  drawerIcon: ({ tintColor, }) => (
+    renderIcon('md-map', tintColor)
+  )
+}
 const FavsStack = createStackNavigator(
   {
     Favs: {
       screen: Favs,
     },
+    Session: {
+      screen: Session,
+    }
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -50,6 +66,11 @@ const FavsStack = createStackNavigator(
     }),
   }
 )
+FavsStack.navigationOptions = {
+  drawerIcon: ({ tintColor, }) => (
+    renderIcon('md-heart-empty', tintColor)
+  )
+}
 const AboutStack = createStackNavigator(
   {
     About: {
@@ -62,37 +83,17 @@ const AboutStack = createStackNavigator(
     }),
   }
 )
+AboutStack.navigationOptions = {
+  drawerIcon: ({ tintColor, }) => (
+    renderIcon('md-information-circle-outline', tintColor)
+  )
+}
 
-export default createBottomTabNavigator(
+export default createDrawerNavigator(
   {
     Schedule: ScheduleStack,
     Map: MapStack,
     Favs: FavsStack,
     About: AboutStack,
   },
-  {
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }) => {
-        const { routeName } = navigation.state
-        let iconName = 'warning'
-        if (routeName === 'Schedule') iconName = `ios-calendar`
-        if (routeName === 'Map') iconName = `ios-map`
-        if (routeName === 'Favs') iconName = `ios-heart`
-        if (routeName === 'About') iconName = `ios-information-circle`
-
-        return <Ionicons name={iconName} size={25} color={tintColor} />
-      },
-    }),
-    tabBarOptions: {
-      activeTintColor: 'white',
-      inactiveTintColor: '#999',
-      labelStyle: {
-        fontSize: 10,
-        fontFamily: 'Montserrat-Light',
-      },
-      style: {
-        backgroundColor: 'black',
-      },
-    },
-  }
 )
