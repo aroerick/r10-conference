@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Favs from './Favs'
-import FavsContext from '../../context/FavsContext'
+import FavsContext from '../../context/FavsContext/'
 import { Query } from 'react-apollo'
 import { ALL_SESSIONS_QUERY } from '../Schedule/ScheduleContainer'
+import { Text, ActivityIndicator } from 'react-native'
 
 export default class FavsContainer extends Component {
   static navigationOptions = {
@@ -20,8 +21,7 @@ export default class FavsContainer extends Component {
           return (
             <FavsContext.Consumer>
               {values => {
-                const data = allSessions.filter(session => session.id === values.favIds)
-                return <Favs data={data} nav={id => this.sessionNav(id)} />
+                return <Favs data={allSessions} favIds={values.favIds} nav={id => this.sessionNav(id)} />
               }}
             </FavsContext.Consumer>
           )

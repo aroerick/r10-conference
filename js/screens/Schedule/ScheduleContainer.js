@@ -28,7 +28,7 @@ export default class ScheduleContainer extends Component {
         {({ data: { allSessions }, loading, error }) => {
           if (loading) return <ActivityIndicator />
           if (error) return <Text>Error :</Text>
-          return <Schedule data={formatSessionData(allSessions)} nav={id => {this.sessionNav(id)}}/>
+          return <Schedule data={formatSessionData(allSessions)} nav={id => this.sessionNav(id)}/>
         }}
       </Query>
     )
