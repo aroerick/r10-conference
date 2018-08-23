@@ -18,7 +18,7 @@ export const SessionList = ({ data, styles, nav }) => {
           <SessionHeader styles={styles.header} title={title} />
         )}
         sections={data}
-        keyExtractor={(item, index) => item + index}
+        keyExtractor={(item) => item.id}
       />
     </ScrollView>
   )
