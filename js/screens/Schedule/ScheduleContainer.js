@@ -12,6 +12,7 @@ export const ALL_SESSIONS_QUERY = gql`
       title
       startTime
       location
+      description
     }
   }
 `
@@ -28,7 +29,16 @@ export default class ScheduleContainer extends Component {
         {({ data: { allSessions }, loading, error }) => {
           if (loading) return <ActivityIndicator />
           if (error) return <Text>Error :</Text>
-          return <Schedule data={formatSessionData(allSessions)} nav={id => this.sessionNav(id)}/>
+          return (
+            <Schedule
+              data={formatSessionData(allSessions)}
+              nav={id =>
+                allSessions.find(session => session.id === id).description
+                  ? this.sessionNav(id)
+                  : null
+              }
+            />
+          )
         }}
       </Query>
     )
