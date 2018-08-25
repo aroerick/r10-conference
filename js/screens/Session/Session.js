@@ -1,18 +1,23 @@
 import React from 'react'
-import {
-  Text,
-  ScrollView,
-  View,
-  Image,
-  TouchableOpacity,
-} from 'react-native'
+import { Text, ScrollView, View, Image, TouchableOpacity, Platform } from 'react-native'
 import moment from 'moment'
 import styles from './styles'
 import LinearGradient from 'react-native-linear-gradient'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const SessionSingle = ({ data, addFav, removeFav, favIds }) => {
+const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
+
   return (
     <ScrollView style={styles.container}>
+      {favIds.includes(data.id) ? (
+        <Ionicons
+          style={styles.fav}
+          name={iconName}
+          size={15}
+          color={'#cf392a'}
+        />
+      ) : null}
       <Text style={styles.secondary}>{data.location}</Text>
       <Text style={styles.primary}>{data.title}</Text>
       <Text style={styles.time}>{moment(data.startTime).format('h:mm A')}</Text>

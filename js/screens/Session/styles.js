@@ -58,6 +58,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  fav: {
+    position: 'absolute',
+    right: 5,
+  }
 })
 
 export default styles

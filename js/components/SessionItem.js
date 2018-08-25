@@ -1,7 +1,10 @@
 import React from 'react'
-import { Text, TouchableHighlight, View } from 'react-native'
+import { Text, TouchableHighlight, View, Platform } from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import FavsContext from '../context/FavsContext/'
 
 export const SessionItem = ({ item, onPress, styles }) => {
+  const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
   return (
     <TouchableHighlight
       key={item.id}
@@ -12,6 +15,19 @@ export const SessionItem = ({ item, onPress, styles }) => {
       <View style={styles.event}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.location}>{item.location}</Text>
+        <FavsContext.Consumer>
+          {values => {
+            if (values.favIds.includes(item.id))
+              return (
+                <Ionicons
+                  style={styles.fav}
+                  name={iconName}
+                  size={15}
+                  color={'#cf392a'}
+                />
+              )
+          }}
+        </FavsContext.Consumer>
       </View>
     </TouchableHighlight>
   )

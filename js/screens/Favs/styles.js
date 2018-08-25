@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Regular',
     color: '#999',
   },
+  fav: {
+    position: 'absolute',
+    right: 15,
+    bottom: 15,
+  }
 })
 
 export default styles
