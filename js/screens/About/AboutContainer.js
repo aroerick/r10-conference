@@ -21,7 +21,7 @@ export default class AboutContainer extends Component {
     return (
       <Query query={ALL_CONDUCTS_QUERY}>
         {({ data: { allConducts }, loading, error }) => {
-          if (loading) return <ActivityIndicator />
+          if (loading) return <ActivityIndicator size="large"/>
           if (error) return <Text>Error :</Text>
           return <About data={allConducts} />
         }}

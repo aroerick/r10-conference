@@ -26,7 +26,7 @@ export default class SpeakerContainer extends Component {
         variables={{ id: this.props.navigation.getParam('id') }}
       >
         {({ data: {Speaker}, loading, error }) => {
-          if (loading) return <ActivityIndicator />
+          if (loading) return <ActivityIndicator size="large" />
           if (error) return <Text>Error :{error.message}</Text>
           return (
             <SpeakerSingle

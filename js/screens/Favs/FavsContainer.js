@@ -16,7 +16,7 @@ export default class FavsContainer extends Component {
     return (
       <Query query={ALL_SESSIONS_QUERY}>
         {({ data: { allSessions }, loading, error }) => {
-          if (loading) return <ActivityIndicator />
+          if (loading) return <ActivityIndicator size="large" />
           if (error) return <Text>Error :</Text>
           return (
             <FavsContext.Consumer>

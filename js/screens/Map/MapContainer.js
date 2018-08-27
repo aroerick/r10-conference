@@ -18,7 +18,7 @@ const Conducts = () => (
     `}
   >
     {({ loading, error, data }) => {
-      if (loading) return <ActivityIndicator />
+      if (loading) return <ActivityIndicator size="large" />
       if (error) return <Text>Error :(</Text>
 
       return data.allConducts.map(({ title, description, id }) => (

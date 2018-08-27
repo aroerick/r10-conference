@@ -34,7 +34,7 @@ export default class SessionContainer extends Component {
         variables={{ id: this.props.navigation.getParam('id') }}
       >
         {({ data: { Session }, loading, error }) => {
-          if (loading) return <ActivityIndicator />
+          if (loading) return <ActivityIndicator size="large" />
           if (error) return <Text>Error :</Text>
           return (
             <FavsContext.Consumer>
