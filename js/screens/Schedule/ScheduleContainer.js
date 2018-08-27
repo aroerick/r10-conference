@@ -4,6 +4,7 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Text, ActivityIndicator } from 'react-native'
 import { formatSessionData } from '../../lib/formatSessionData'
+import PropTypes from 'prop-types'
 
 export const ALL_SESSIONS_QUERY = gql`
   {
@@ -43,4 +44,8 @@ export default class ScheduleContainer extends Component {
       </Query>
     )
   }
+}
+
+ScheduleContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
 }

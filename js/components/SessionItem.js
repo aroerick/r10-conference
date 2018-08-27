@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, TouchableHighlight, View, Platform } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FavsContext from '../context/FavsContext/'
+import PropTypes from 'prop-types'
 
 export const SessionItem = ({ item, onPress, styles }) => {
   const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
@@ -31,4 +32,10 @@ export const SessionItem = ({ item, onPress, styles }) => {
       </View>
     </TouchableHighlight>
   )
+}
+
+SessionItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  styles: PropTypes.object.isRequired,
+  onPress: PropTypes.func.isRequired
 }

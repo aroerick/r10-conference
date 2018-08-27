@@ -4,6 +4,7 @@ import moment from 'moment'
 import styles from './styles'
 import LinearGradient from 'react-native-linear-gradient'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import PropTypes from 'prop-types'
 
 const SessionSingle = ({ data, addFav, removeFav, favIds, nav }) => {
 const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
@@ -56,6 +57,14 @@ const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
       )}
     </ScrollView>
   )
+}
+
+SessionSingle.propTypes = {
+  data: PropTypes.object.isRequired,
+  addFav: PropTypes.func.isRequired,
+  removeFav: PropTypes.func.isRequired,
+  favIds: PropTypes.array.isRequired,
+  nav: PropTypes.object.isRequired
 }
 
 export default SessionSingle

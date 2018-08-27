@@ -4,6 +4,7 @@ import FavsContext from '../../context/FavsContext/'
 import { Query } from 'react-apollo'
 import { ALL_SESSIONS_QUERY } from '../Schedule/ScheduleContainer'
 import { Text, ActivityIndicator } from 'react-native'
+import PropTypes from 'prop-types'
 
 export default class FavsContainer extends Component {
   static navigationOptions = {
@@ -29,4 +30,7 @@ export default class FavsContainer extends Component {
       </Query>
     )
   }
+}
+FavsContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
 }

@@ -3,6 +3,7 @@ import SpeakerSingle from './Speaker'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Text, ActivityIndicator } from 'react-native'
+import PropTypes from 'prop-types'
 
 const SPEAKER_QUERY = gql`
   query Speaker($id: ID!) {
@@ -31,11 +32,14 @@ export default class SpeakerContainer extends Component {
           return (
             <SpeakerSingle
               data={Speaker}
-              nav={this.props.navigation}
             />
           )
         }}
       </Query>
     )
   }
+}
+
+SpeakerContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
 }

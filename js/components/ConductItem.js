@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, Animated, Platform } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import PropTypes from 'prop-types'
 
 export default class ConductItem extends Component {
   constructor(props) {
@@ -68,4 +69,9 @@ export default class ConductItem extends Component {
       </View>
     )
   }
+}
+
+ConductItem.propTypes = {
+  data: PropTypes.object.isRequired,
+  styles: PropTypes.object.isRequired,
 }

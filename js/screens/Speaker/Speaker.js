@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './styles'
 import { Text, View, Linking, Image, TouchableOpacity, ScrollView } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
+import PropTypes from 'prop-types'
 
 const SpeakerSingle = ({ data }) => {
   readMore = url => {
@@ -38,6 +39,10 @@ const SpeakerSingle = ({ data }) => {
     </ScrollView>
     </View>
   )
+}
+
+SpeakerSingle.propTypes = {
+  data: PropTypes.object.isRequired
 }
 
 export default SpeakerSingle

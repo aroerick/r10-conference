@@ -4,6 +4,7 @@ import gql from 'graphql-tag'
 import SessionSingle from './Session'
 import { Query } from 'react-apollo'
 import FavsContext from '../../context/FavsContext'
+import PropTypes from 'prop-types'
 
 const SESSION_QUERY = gql`
   query Session($id: ID!) {
@@ -55,4 +56,8 @@ export default class SessionContainer extends Component {
       </Query>
     )
   }
+}
+
+SessionContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
 }

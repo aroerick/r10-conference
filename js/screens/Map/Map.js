@@ -1,10 +1,11 @@
 import React from 'react'
 import { Text, ScrollView } from 'react-native'
 import styles from './styles'
+import PropTypes from 'prop-types'
 
-const Map = ({ Conducts }) => {
+const Map = () => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView>
       <Text>MAP</Text>
     </ScrollView>
   )

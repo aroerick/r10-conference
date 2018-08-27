@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View, ScrollView, Image } from 'react-native'
 import ConductItem from '../../components/ConductItem'
 import styles from './styles'
+import PropTypes from 'prop-types'
 
 const logo = require('../../assets/images/r10_logo.png')
 
@@ -27,6 +28,10 @@ const About = ({ data }) => {
       <Text style={styles.bodyText}>&copy; RED Academy 2018</Text>
     </ScrollView>
   )
+}
+
+About.propTypes = {
+  data: PropTypes.array.isRequired
 }
 
 export default About
