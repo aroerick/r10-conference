@@ -8,8 +8,9 @@ import Schedule from '../screens/Schedule'
 import Session from '../screens/Session'
 import Map from '../screens/Map'
 import Favs from '../screens/Favs'
+import Speaker from '../screens/Speaker'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { sharedNavigationOptions } from './config'
+import { sharedNavigationOptions, darkNavigationOptions } from './config'
 
 const renderIcon = (iconName, tintColor) => {
   return <Ionicons name={iconName} size={25} color={tintColor} />
@@ -88,6 +89,18 @@ AboutStack.navigationOptions = {
     renderIcon('md-information-circle-outline', tintColor)
   )
 }
+export const SpeakerStack = createStackNavigator(
+  {
+    Speaker: {
+      screen: Speaker,
+    },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      ...darkNavigationOptions(navigation),
+    }),
+  }
+)
 
 export default createDrawerNavigator(
   {
@@ -96,4 +109,9 @@ export default createDrawerNavigator(
     Favs: FavsStack,
     About: AboutStack,
   },
+  {
+    contentOptions: {
+      activeTintColor: '#9963ea'
+    }
+  }
 )

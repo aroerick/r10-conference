@@ -22,6 +22,11 @@ export const sharedNavigationOptions = navigation => ({
   headerStyle: {
     backgroundColor: 'transparent',
   },
+  headerLeft: (
+    <TouchableOpacity style={{paddingLeft: 15}} onPress={() => navigation.openDrawer()}>
+      <Ionicons name={'md-menu'} size={30} color={'white'} />
+    </TouchableOpacity>
+  ),
   headerTintColor: 'white',
   headerTitleStyle: {
     fontFamily: 'Montserrat-Light',
@@ -39,7 +44,7 @@ export const darkNavigationOptions = navigation => ({
   headerLeft: (
     <TouchableOpacity onPress={() => navigation.goBack(null)}>
       <Ionicons
-        style={{ marginLeft: 10}}
+        style={{ marginLeft: 10 }}
         name="md-close"
         size={25}
         color="white"
