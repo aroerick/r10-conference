@@ -1,5 +1,4 @@
 import React from 'react'
-import { Platform } from 'react-native'
 import {
   createBottomTabNavigator,
   createStackNavigator,
@@ -9,8 +8,9 @@ import Schedule from '../screens/Schedule'
 import Session from '../screens/Session'
 import Map from '../screens/Map'
 import Favs from '../screens/Favs'
+import Speaker from '../screens/Speaker'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { sharedNavigationOptions } from './config'
+import { sharedNavigationOptions, darkNavigationOptions } from './config'
 
 const ScheduleStack = createStackNavigator(
   {
@@ -19,7 +19,7 @@ const ScheduleStack = createStackNavigator(
     },
     Session: {
       screen: Session,
-    }
+    },
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -46,7 +46,7 @@ const FavsStack = createStackNavigator(
     },
     Session: {
       screen: Session,
-    }
+    },
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -63,6 +63,18 @@ const AboutStack = createStackNavigator(
   {
     navigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation),
+    }),
+  }
+)
+export const SpeakerStack = createStackNavigator(
+  {
+    Speaker: {
+      screen: Speaker,
+    },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      ...darkNavigationOptions(navigation),
     }),
   }
 )

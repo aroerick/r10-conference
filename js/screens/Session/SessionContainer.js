@@ -14,6 +14,7 @@ const SESSION_QUERY = gql`
       description
       startTime
       speaker {
+        id
         name
         bio
         image
@@ -38,7 +39,15 @@ export default class SessionContainer extends Component {
           return (
             <FavsContext.Consumer>
               {values => {
-                return <SessionSingle data={Session} addFav={values.addFav} removeFav={values.removeFav} favIds={values.favIds}/>
+                return (
+                  <SessionSingle
+                    data={Session}
+                    addFav={values.addFav}
+                    removeFav={values.removeFav}
+                    favIds={values.favIds}
+                    nav={this.props.navigation}
+                  />
+                )
               }}
             </FavsContext.Consumer>
           )

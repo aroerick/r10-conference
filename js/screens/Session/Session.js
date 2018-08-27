@@ -5,9 +5,8 @@ import styles from './styles'
 import LinearGradient from 'react-native-linear-gradient'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-const SessionSingle = ({ data, addFav, removeFav, favIds }) => {
+const SessionSingle = ({ data, addFav, removeFav, favIds, nav }) => {
 const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
-
   return (
     <ScrollView style={styles.container}>
       {favIds.includes(data.id) ? (
@@ -25,7 +24,7 @@ const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
       <View style={styles.speaker}>
         <Text style={styles.secondary}>Presented by:</Text>
         <Image style={styles.image} source={{ uri: data.speaker.image }} />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => nav.navigate('Speaker', { id: data.speaker.id })}>
           <Text style={styles.caption}>{data.speaker.name}</Text>
         </TouchableOpacity>
       </View>
