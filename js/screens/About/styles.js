@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    padding: 12,
+    paddingHorizontal: 12,
   },
   image: {
     alignSelf: 'center',
