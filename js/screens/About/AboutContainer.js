@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import About from './About'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Text, ActivityIndicator} from 'react-native'
+import { Text, ActivityIndicator } from 'react-native'
 
 const ALL_CONDUCTS_QUERY = gql`
   {
