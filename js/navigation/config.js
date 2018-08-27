@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Platform } from 'react-native'
 import { Header } from 'react-navigation'
 import LinearGradient from 'react-native-linear-gradient'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -22,11 +22,18 @@ export const sharedNavigationOptions = navigation => ({
   headerStyle: {
     backgroundColor: 'transparent',
   },
-  headerLeft: (
-    <TouchableOpacity style={{paddingLeft: 15}} onPress={() => navigation.openDrawer()}>
-      <Ionicons name={'md-menu'} size={30} color={'white'} />
-    </TouchableOpacity>
-  ),
+  ...Platform.select({
+    android: {
+      headerLeft: (
+        <TouchableOpacity
+          style={{ paddingLeft: 15 }}
+          onPress={() => navigation.openDrawer()}
+        >
+          <Ionicons name={'md-menu'} size={30} color={'white'} />
+        </TouchableOpacity>
+      ),
+    },
+  }),
   headerTintColor: 'white',
   headerTitleStyle: {
     fontFamily: 'Montserrat-Light',
